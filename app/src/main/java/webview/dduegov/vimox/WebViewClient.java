@@ -30,6 +30,8 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import android.net.http.SslError;
+import android.webkit.SslErrorHandler;
 
 
 public class WebViewClient extends Activity {
@@ -60,7 +62,7 @@ public class WebViewClient extends Activity {
         web.getSettings().setUseWideViewPort(true);
 
        // settings.setSupportMultipleWindows(true);
-       // settings.setJavaScriptEnabled(true);
+       settings.setJavaScriptEnabled(true);
 
        settings.setJavaScriptCanOpenWindowsAutomatically(true);
         web.loadUrl("http://egov.ddit.ac.in/index.php?r=site/login");
@@ -68,6 +70,11 @@ public class WebViewClient extends Activity {
 
     public class myWebClient extends android.webkit.WebViewClient
     {
+	@Override
+        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+            handler.proceed();
+        }
+	    
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             // TODO Auto-generated method stub
