@@ -12,4 +12,4 @@ in build.gradle(Module:app)
 
 -> targetSdkVersion "x"
 
--> compile 'com.android.support:appcompat-v7:26.0.0'
+-> compile 'com.android.support:appcompat-v7:x(latest_version)+'
